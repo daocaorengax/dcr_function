@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试</title>
+  <style>
+      *{
+          margin: 0 ;
+          padding: 0;
+      }
+      input{
+          display: block;
+          border:1px solid rgb(42, 21, 134);
+          width: 200px;
+          height: 40px;
+          line-height: 40px;
+          font-size: 16px;
+          margin: 50px auto;
+          text-indent: 2em;
+      }
+      p{
+          width: 180px;
+          padding-left: 10px;
+          padding-right: 10px;
+          height: 40px;
+          background: rgb(42, 21, 134);
+          color: #fff;
+          line-height: 40px;
+          margin: 0 auto;
+      }
+  </style>
+</head>
+<body>
+    <div id="dome">
+      <div>
+        测试数据
+      </div>
+      <input type="datetime" name="data01" onClick="" id="datetime">
+      <p id="text"></p>
+    </div>
+</body>
+<script src="./js/index.js"></script>
+<script>
+  window.onload =function(){
+    var Value = document.getElementById("datetime")
+    var title = document.getElementById("text")
+    var funCutstr = Cutstr; //引用函数
+    // 实时获取input输入框中的值
+    if('oninput' in Value){
+      Value.addEventListener("input",getWord,false);
+    }else{
+      Value.onpropertychange = getWord
+    }
+    function getWord(){
+      title.innerText = funCutstr(Value.value,10)
+      console.log(funCutstr(Value.value,5),'引用Cutstr函数')
+    }
+  }
+</script>
+</html>
